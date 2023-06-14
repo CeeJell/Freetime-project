@@ -1,18 +1,14 @@
 ﻿using Main;
 
 bool Gameloop = true;
+Player player = new Player();
+player.playerItems.Add(Loot.test);
+player.playerItems.Add(Loot.test);
+player.playerItems.Add(Loot.test);
 
-void setupGame()
-{
-    Player player = new Player();
-    player.playerLoot[1] = Loot.test;
-    player.playerLoot[2] = Loot.test;
-    Console.WriteLine("test");
-    Console.WriteLine(player.playerLoot[1].ToString());
-}
-
+// Console.WriteLine(player.playerItems[int.Parse(siffra.ToString())]);
 
 while (Gameloop)
 {
-    setupGame();  
+    
 }
