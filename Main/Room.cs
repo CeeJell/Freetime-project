@@ -15,6 +15,7 @@ namespace Main
         private Room? west;
 
         public Loot loot;
+        public Enemies enemy;
 
         public string Description { get; set; } = "";
 
@@ -43,10 +44,4 @@ namespace Main
             west = otherRoom;
         }
     }
-
-    public enum Loot
-    {
-
-    }
-
 }
