@@ -14,6 +14,11 @@ namespace Main
         private Room? east;
         private Room? west;
 
+        public Room? GoSouth => south;
+        public Room? GoEast => east;
+        public Room? GoWest => west;
+        public Room? GoNorth => north;
+
         public bool Lock = false;
 
         public Loot loot;

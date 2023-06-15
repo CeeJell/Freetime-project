@@ -1,4 +1,5 @@
 ﻿using Main;
+using static System.Formats.Asn1.AsnWriter;
 
 internal class Program
 {
@@ -7,16 +8,15 @@ internal class Program
         bool Gameloop = true;
 
         Player player = new Player();
-        player.playerItems.Add(Loot.test);
-        player.playerItems.Add(Loot.test);
 
-        Room room111 = new Room() { Description = "" };
-        Room room112 = new Room() { Description = "" };
-        Room room113 = new Room() { Description = "" };
-        Room room114 = new Room() { Description = "" };
-        Room room115 = new Room() { Description = "" };
-        Room room116 = new Room() { Description = "" };
-        Room room121 = new Room() { Description = "" };
+
+        Room room111 = new Room() { Description = "11" };
+        Room room112 = new Room() { Description = "12" };
+        Room room113 = new Room() { Description = "13" };
+        Room room114 = new Room() { Description = "14" };
+        Room room115 = new Room() { Description = "15" };
+        Room room116 = new Room() { Description = "16" };
+        Room room121 = new Room() { Description = "21" };
         Room room124 = new Room() { Description = "" };
         Room room126 = new Room() { Description = "" };
         Room room131 = new Room() { Description = "" };
@@ -85,16 +85,84 @@ internal class Program
         Room room465 = new Room() { Description = "" };
         Room room466 = new Room() { Description = "" };
 
+        Room currentRoom = room113;
+        Room lastRoom = currentRoom;
+        Room tempRoom = null;
+
         room111.AddEast(room112);
         room111.AddNorth(room121);
         room112.AddEast(room113);
+        room113.AddEast(room114);
+        room114.AddEast(room115);
+        room114.AddNorth(room124);
+        room115.AddEast(room116);
+        room116.AddNorth(room126);
+        room121.AddNorth(room131);
+        room126.AddNorth(room136);
+        room131.AddEast(room132);
+        room132.AddEast(room133);
+        room132.AddNorth(room142);
+        room133.AddNorth(room143);
+        room135.AddEast(room136);
+        room136.AddNorth(room146);
+        room142.AddEast(room143);
+        room143.AddEast(room144);
+        room144.AddNorth(room154);
+        room146.AddNorth(room146);
+        room154.AddEast(room155);
+        room154.AddNorth(room164);
+        room155.AddEast(room156);
+        room163.AddEast(room164);
 
         // Console.WriteLine(player.playerItems[int.Parse(siffra.ToString())]);
         // Console.ForegroundColor = ConsoleColor.Green;
 
         while (Gameloop)
         {
-            
+            Console.WriteLine("Do you want to go North, South, East or West?");
+            Console.WriteLine();
+
+            string keyPressed = Console.ReadLine().ToLower();
+
+            tempRoom = null;
+            switch (keyPressed)
+            {
+                case "n":
+                case "north":
+                    tempRoom = currentRoom.GoNorth;
+                    break;
+                case "s":
+                case "south":
+                    tempRoom = currentRoom.GoSouth;
+                    break;
+                case "e":
+                case "east":
+                    tempRoom = currentRoom.GoEast;
+                    break;
+                case "w":
+                case "west":
+                    tempRoom = currentRoom.GoWest;
+                    break;
+                default:
+                    System.Console.Write("Not one of the options, ");
+                    break;
+            }
+            if (tempRoom == null)
+            {
+                System.Console.WriteLine("You can't go that way.");
+                continue;
+            }
+            lastRoom = currentRoom;
+            currentRoom = tempRoom;
+
+            writeDescription();
+        }
+
+        void writeDescription()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(currentRoom.Description);
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
