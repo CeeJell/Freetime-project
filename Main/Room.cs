@@ -14,6 +14,8 @@ namespace Main
         private Room? east;
         private Room? west;
 
+        public bool Lock = false;
+
         public Loot loot;
         public Enemies enemy;
 
