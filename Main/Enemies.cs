@@ -8,6 +8,14 @@ namespace Main
 {
     public enum Enemies
     {
-
+        oneSpider,
+        twoSpiders,
+        threeSpiders,
+        oneSkeleton,
+        twoSkeletons,
+        threeSkeletons,
+        oneScorpion,
+        twoScorpions,
+        threeScorpions,
     }
 }
