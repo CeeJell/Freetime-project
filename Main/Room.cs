@@ -24,8 +24,9 @@ namespace Main
         public Loot loot;
         public Enemies enemy;
 
+        public string roomCoordinate { get; set; } = "";
         public string Description { get; set; } = "";
-
+        public string whatDirections { get; set; } = "";
         public void AddNorth(Room otherRoom, bool oneway = false)
         {
             if (!oneway)
