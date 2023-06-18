@@ -11,10 +11,10 @@ internal class Program
         Player player = new Player();
 
 
-        Room room111 = new Room() { roomCoordinate = "Room 1.11", Description = "", whatDirections = "" };
-        Room room112 = new Room() { roomCoordinate = "Room 1.12", Description = "", whatDirections = "" };
-        Room room113 = new Room() { roomCoordinate = "Room 1.13", Description = "", whatDirections = "" };
-        Room room114 = new Room() { roomCoordinate = "Room 1.14", Description = "", whatDirections = "" };
+        Room room111 = new Room() { roomCoordinate = "Room 1.11", Description = "gay", whatDirections = "North, East and West" };
+        Room room112 = new Room() { roomCoordinate = "Room 1.12", Description = "supoer gay", whatDirections = "" };
+        Room room113 = new Room() { roomCoordinate = "Room 1.13", Description = "lmao gay", whatDirections = "" };
+        Room room114 = new Room() { roomCoordinate = "Room 1.14", Description = "wooo", whatDirections = "" };
         Room room115 = new Room() { roomCoordinate = "Room 1.15", Description = "", whatDirections = "" };
         Room room116 = new Room() { roomCoordinate = "Room 1.16", Description = "", whatDirections = "" };
         Room room121 = new Room() { roomCoordinate = "Room 1.21", Description = "", whatDirections = "" };
@@ -125,6 +125,8 @@ internal class Program
                 printPrelude();
                 StartGame = false;
             }
+            printDescription();
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Do you want to go North, South, East or West?");
             Console.WriteLine();
@@ -158,6 +160,7 @@ internal class Program
             }
             if (tempRoom == null)
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine("You can't go that way.");
                 continue;
@@ -165,7 +168,7 @@ internal class Program
             lastRoom = currentRoom;
             currentRoom = tempRoom;
 
-            printDescription();
+            Console.Clear();
         }
 
         void printDescription()
@@ -187,8 +190,6 @@ internal class Program
             Console.WriteLine("Press Enter to Start!");
             Console.ReadLine();
             Console.Clear();
-
-
         }
     }
 }
